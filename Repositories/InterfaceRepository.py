@@ -1,18 +1,15 @@
-import collections
-from re import X
-from turtle import update
 import pymongo
 import certifi
 from bson import DBRef
 from bson.objectid import ObjectId
-from typing import Collection, TypeVar, Generic, get_args
+from typing import TypeVar, Generic,get_args
 import json
 
 T = TypeVar('T')
 class InterfaceRepository(Generic[T]):
 
     #Constructor
-    def __init__(self) -> None:
+    def __init__(self):
         ca = certifi.where()
         configData = self.loadFileConfig()
         client = pymongo.MongoClient(configData["data-db-connection"], tlsCAFile=ca)

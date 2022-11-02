@@ -1,44 +1,30 @@
+from Repositories.CandidateRepository import CandidateRepository
 from Models.Candidate import Candidate
 
 class CandidateController():
-    def __init__(self) -> None:
-        print("CandidateController creado")
+    def __init__(self):
+        self.candidateRepository = CandidateRepository()
     
     def index(self):
-        print("Listar todos los candidatos")
-        candidate = {
-            "_id": "abc123",
-            "dni": "1014176356",
-            "resolution_number": "123456",
-            "name": "Sebastián",
-            "last_name": "Rodríguez"
-        }
-        return [candidate]
+        return self.candidateRepository.findAll()
 
     def create(self, infoCandidate):
-        print("Crear candidato")
         candidate = Candidate(infoCandidate)
-        return candidate.__dict__
+        return self.candidateRepository.save(candidate)
         
     def show(self, id):
-        print("Dandidato con id", id)
-
-        candidate = {
-            "_id": id,
-            "dni": "1014176356",
-            "resolution_number": "123456",
-            "name": "Sebastián",
-            "last_name": "Rodríguez"
-        }
-        return candidate
+        candidate=Candidate(self.candidateRepository.findById(id))
+        return candidate.__dict__
     
     def update(self, id, infoCandidate):
-        print("Actualizando el candidato con id", id)
-        candidate = Candidate(infoCandidate)
-        return candidate.__dict__
+        candidate=Candidate(self.candidateRepository.findById(id))
+        candidate.dni = infoCandidate["dni"]
+        candidate.resolution_number = infoCandidate["resolution_number"]
+        candidate.name = infoCandidate["name"]
+        candidate.last_name = infoCandidate["last_name"] 
+        return self.candidateRepository.save(candidate)
 
     def delete(self, id):
-        print("Eliminando el candidato con id", id)
-        return {"deleted_count": 1}
+        return self.candidateRepository.delete(id)
 
     

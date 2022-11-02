@@ -2,6 +2,8 @@
   "url-backend": "127.0.0.1",
   "port": 9999,
 
-  "data-db-connection": "mongodb+srv://sebas1224:u5ub1itbuMvMt9fy@cluster0.qfgmf.mongodb.net/records?retryWrites=true&w=majority",
-  "name-db": "records"
+  "data-db-connection": "mongodb+srv://sebas1224:sebas1224@registraduria.lcdaigy.mongodb.net/?retryWrites=true&w=majority",
+  "name-db": "results"
+
+ 
 }
