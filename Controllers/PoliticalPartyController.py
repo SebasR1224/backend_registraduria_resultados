@@ -15,6 +15,7 @@ class PoliticalPartyController():
     def show(self, id):
         politicalParty = PoliticalParty(self.politicalPartyRepository.findById(id))
         return politicalParty.__dict__
+        
     def update(self, id, infoPoliticalParty):
         politicalParty = PoliticalParty(self.politicalPartyRepository.findById(id))
         politicalParty.name = infoPoliticalParty["name"]
