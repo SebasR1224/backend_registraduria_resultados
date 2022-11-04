@@ -1,4 +1,3 @@
-from Models.AbstractModel import AbstractModel
 
-class VotingTable(AbstractModel):
+class VotingTableController():
     pass

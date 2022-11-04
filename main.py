@@ -11,8 +11,13 @@ cors = CORS(app)
 #controllers instance
 from Controllers.CandidateController import CandidateController
 candidateController = CandidateController()
+
 from Controllers.PoliticalPartyController import PoliticalPartyController
 politicalPartyController = PoliticalPartyController()
+
+from Controllers.ResultController import ResultController
+resultController = ResultController()
+
 
 @app.route("/",methods=['GET'])
 def test():
@@ -68,7 +73,32 @@ def updatePoliticalParty(id):
 def deletePoliticalParty(id):
     json = politicalPartyController.delete(id)
     return jsonify(json)
-#------------------- end methods Political Parties -------------------------
+#------------------- end methods Political Parties ------------------------
+
+#-------------------methods Results -----------------------------
+@app.route("/results", methods=['GET'])
+def getResults():
+    json =  resultController.index()
+    return jsonify(json)
+@app.route("/results", methods=['POST'])
+def createResult():
+    data = request.get_json()
+    json = resultController.create(data)
+    return jsonify(json)
+@app.route("/results/<string:id>",methods=['GET'])
+def getResult(id):
+    json =  resultController.show(id)
+    return jsonify(json)
+@app.route("/results/<string:id>", methods=['PUT'])
+def updateResult(id):
+    data = request.get_json()
+    json = resultController.update(id, data)
+    return jsonify(json)
+@app.route("/results/<string:id>", methods=['DELETE'])
+def deleteResult(id):
+    json = resultController.delete(id)
+    return jsonify(json)
+#------------------- end methods Results ------------------------
 
 def loadFileConfig():
     with open('config.json') as f:
