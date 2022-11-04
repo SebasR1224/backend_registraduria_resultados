@@ -18,7 +18,6 @@ class ResultController():
     """
     Asignacion mesa de votación y candidatos
     """
-
     def create(self, infoResult):
         id_votingTable = infoResult.pop("id_votingTable")
         id_candidate = infoResult.pop("id_candidate") 

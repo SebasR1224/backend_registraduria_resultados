@@ -18,6 +18,9 @@ politicalPartyController = PoliticalPartyController()
 from Controllers.ResultController import ResultController
 resultController = ResultController()
 
+from Controllers.VotingTableController import VotingTableController
+votingTableController = VotingTableController()
+
 
 @app.route("/",methods=['GET'])
 def test():
@@ -99,6 +102,31 @@ def deleteResult(id):
     json = resultController.delete(id)
     return jsonify(json)
 #------------------- end methods Results ------------------------
+
+#-------------------methods Voting tables -----------------------
+@app.route("/votingTables", methods=['GET'])
+def getVotingTables():
+    json =  votingTableController.index()
+    return jsonify(json)
+@app.route("/votingTables", methods=['POST'])
+def createVotingTable():
+    data = request.get_json()
+    json = votingTableController.create(data)
+    return jsonify(json)
+@app.route("/votingTables/<string:id>",methods=['GET'])
+def getVontingTable(id):
+    json =  votingTableController.show(id)
+    return jsonify(json)
+@app.route("/votingTables/<string:id>", methods=['PUT'])
+def updateVotingTable(id):
+    data = request.get_json()
+    json = votingTableController.update(id, data)
+    return jsonify(json)
+@app.route("/votingTables/<string:id>", methods=['DELETE'])
+def deleteVotingTable(id):
+    json = votingTableController.delete(id)
+    return jsonify(json)
+#------------------- end methods Voting tables -------------------
 
 def loadFileConfig():
     with open('config.json') as f:
