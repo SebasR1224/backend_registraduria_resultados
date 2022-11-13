@@ -44,4 +44,18 @@ class ResultController():
     def delete(self, id):
         return self.resultRepository.delete(id)
 
+    def voteList(self, id_table):
+        return self.resultRepository.voteList(id_table)
+    
+    def getVotesCandidates(self, id_table):
+        return self.resultRepository.getVotesCandidates(id_table)
 
+    def totalVotesTable(self):
+        return self.resultRepository.totalVotesTable()
+         
+         
+    def totalVotesPoliticalParty(self, id_table):
+        return self.resultRepository.totalVotesPoliticalParty(id_table)
+
+    def percentageCongress(self):
+        return self.resultRepository.percentageCongress()

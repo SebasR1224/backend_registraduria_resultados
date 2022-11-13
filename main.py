@@ -128,6 +128,40 @@ def deleteVotingTable(id):
     return jsonify(json)
 #------------------- end methods Voting tables -------------------
 
+#-------------------methods reporsts -----------------------
+
+@app.route("/voteList/<string:id_table>", methods=['GET'])
+@app.route("/voteList", methods=['GET'])
+def voteList(id_table=None):
+    json = resultController.voteList(id_table)
+    return jsonify(json)
+
+@app.route("/getVotesCandidates/<string:id_table>", methods=['GET'])
+@app.route("/getVotesCandidates", methods=['GET'])
+def getVotesCandidates(id_table=None):
+    json = resultController.getVotesCandidates(id_table)
+    return jsonify(json)
+
+
+@app.route("/totalVotesTable", methods=['GET'])
+def totalVotesTable():
+    json = resultController.totalVotesTable()
+    return jsonify(json)
+
+@app.route("/totalVotesPoliticalParty/<string:id_table>", methods=['GET'])
+@app.route("/totalVotesPoliticalParty", methods=['GET'])
+def totalVotesPoliticalParty(id_table=None):
+    json = resultController.totalVotesPoliticalParty(id_table)
+    return jsonify(json)
+
+
+@app.route("/percentageCongress", methods=['GET'])
+def percentageCongress():
+    json = resultController.percentageCongress()
+    return jsonify(json)   
+
+#------------------- end reporsts -------------------
+
 def loadFileConfig():
     with open('config.json') as f:
         data = json.load(f)
