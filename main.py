@@ -54,25 +54,25 @@ def deleteCandidate(id):
 #------------------- end methods Candidates -------------------------------
     
 #-------------------methods Political Parties -----------------------------
-@app.route("/politicalParties", methods=['GET'])
+@app.route("/political-parties", methods=['GET'])
 def getPoliticalParties():
     json =  politicalPartyController.index()
     return jsonify(json)
-@app.route("/politicalParties", methods=['POST'])
+@app.route("/political-parties", methods=['POST'])
 def createPoliticalParty():
     data = request.get_json()
     json = politicalPartyController.create(data)
     return jsonify(json)
-@app.route("/politicalParties/<string:id>",methods=['GET'])
+@app.route("/political-parties/<string:id>",methods=['GET'])
 def getPoliticalParty(id):
     json =  politicalPartyController.show(id)
     return jsonify(json)
-@app.route("/politicalParties/<string:id>", methods=['PUT'])
+@app.route("/political-parties/<string:id>", methods=['PUT'])
 def updatePoliticalParty(id):
     data = request.get_json()
     json = politicalPartyController.update(id, data)
     return jsonify(json)
-@app.route("/politicalParties/<string:id>", methods=['DELETE'])
+@app.route("/political-parties/<string:id>", methods=['DELETE'])
 def deletePoliticalParty(id):
     json = politicalPartyController.delete(id)
     return jsonify(json)
@@ -104,25 +104,25 @@ def deleteResult(id):
 #------------------- end methods Results ------------------------
 
 #-------------------methods Voting tables -----------------------
-@app.route("/votingTables", methods=['GET'])
+@app.route("/voting-tables", methods=['GET'])
 def getVotingTables():
     json =  votingTableController.index()
     return jsonify(json)
-@app.route("/votingTables", methods=['POST'])
+@app.route("/voting-tables", methods=['POST'])
 def createVotingTable():
     data = request.get_json()
     json = votingTableController.create(data)
     return jsonify(json)
-@app.route("/votingTables/<string:id>",methods=['GET'])
+@app.route("/voting-tables/<string:id>",methods=['GET'])
 def getVontingTable(id):
     json =  votingTableController.show(id)
     return jsonify(json)
-@app.route("/votingTables/<string:id>", methods=['PUT'])
+@app.route("/voting-tables/<string:id>", methods=['PUT'])
 def updateVotingTable(id):
     data = request.get_json()
     json = votingTableController.update(id, data)
     return jsonify(json)
-@app.route("/votingTables/<string:id>", methods=['DELETE'])
+@app.route("/voting-tables/<string:id>", methods=['DELETE'])
 def deleteVotingTable(id):
     json = votingTableController.delete(id)
     return jsonify(json)
@@ -130,32 +130,32 @@ def deleteVotingTable(id):
 
 #-------------------methods reporsts -----------------------
 
-@app.route("/voteList/<string:id_table>", methods=['GET'])
-@app.route("/voteList", methods=['GET'])
+@app.route("/vote-list/<string:id_table>", methods=['GET'])
+@app.route("/vote-list", methods=['GET'])
 def voteList(id_table=None):
     json = resultController.voteList(id_table)
     return jsonify(json)
 
-@app.route("/getVotesCandidates/<string:id_table>", methods=['GET'])
-@app.route("/getVotesCandidates", methods=['GET'])
+@app.route("/get-votes-candidates/<string:id_table>", methods=['GET'])
+@app.route("/get-votes-candidates", methods=['GET'])
 def getVotesCandidates(id_table=None):
     json = resultController.getVotesCandidates(id_table)
     return jsonify(json)
 
 
-@app.route("/totalVotesTable", methods=['GET'])
+@app.route("/total-votes-table", methods=['GET'])
 def totalVotesTable():
     json = resultController.totalVotesTable()
     return jsonify(json)
 
-@app.route("/totalVotesPoliticalParty/<string:id_table>", methods=['GET'])
-@app.route("/totalVotesPoliticalParty", methods=['GET'])
+@app.route("/total-votes-political-party/<string:id_table>", methods=['GET'])
+@app.route("/total-votes-political-party", methods=['GET'])
 def totalVotesPoliticalParty(id_table=None):
     json = resultController.totalVotesPoliticalParty(id_table)
     return jsonify(json)
 
 
-@app.route("/percentageCongress", methods=['GET'])
+@app.route("/percentage-congress", methods=['GET'])
 def percentageCongress():
     json = resultController.percentageCongress()
     return jsonify(json)   
